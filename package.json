@@ -6,8 +6,8 @@
     "license": "MIT",
     "scripts": {
         "dev": "ts-node-dev ./src/index.ts",
-        "start": "npm run build && node dist/index.js",
-        "build": "echo 'Building...' && rm -rf dist && tsc && cp .env dist/.env && cp -r src/static dist/static/",
+        "start": "npm run build && node build/index.js",
+        "build": "echo 'Building...' && rm -rf build && tsc && cp .env build/.env && cp -r src/static build/static/",
         "lint": "eslint -c .eslintrc.js --ext .ts"
     },
     "dependencies": {

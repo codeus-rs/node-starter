@@ -1,0 +1,43 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "sourceMap": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es5",
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "strictBindCallApply": true,
+        "strictFunctionTypes": true,
+        "strictPropertyInitialization": true,
+        "strictNullChecks": true,
+        "pretty": true,
+        "noFallthroughCasesInSwitch": true,
+        "alwaysStrict": true,
+        "resolveJsonModule": true,
+        "lib": [
+            "dom",
+            "esnext"
+        ],
+        "paths": {
+            "*": [
+                "./node_modules/*"
+            ]
+        }
+    },
+    "include": [
+        "./src/**/*.ts",
+        "./src/**/**/*.ts",
+        "./src/**/**/**/*.ts"
+    ],
+    "exclude": [
+        "./node_modules"
+    ]
+}

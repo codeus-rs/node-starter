@@ -1,0 +1,67 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "eslint:recommended",
+        "plugin:prettier/recommended",
+        "prettier/prettier",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    ],
+    "parserOptions": {
+        "projectFolderIgnoreList": [],
+        "project": [
+            "tsconfig.json"
+        ]
+    },
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "prettier"
+    ],
+    "rules": {
+        "prettier/prettier": [
+            1,
+            {
+                "endOfLine": "auto",
+                "printWidth": 120,
+                "tabWidth": 4,
+                "semi": true,
+                "singleQuote": true,
+                "trailingComma": "all",
+                "bracketSpacing": true,
+                "jsxBracketSameLine": false
+            }
+        ],
+        "no-var": "error",
+        "semi": "error",
+        "comma-dangle": [
+            "error",
+            {
+                "arrays": "always-multiline",
+                "objects": "always-multiline",
+                "imports": "always-multiline",
+                "exports": "always-multiline",
+                "functions": "always-multiline"
+            }
+        ],
+        "indent": "off",
+        "no-multi-spaces": "error",
+        "space-in-parens": "error",
+        "no-multiple-empty-lines": "error",
+        "prefer-const": [
+            "error",
+            {
+                "destructuring": "all",
+                "ignoreReadBeforeAssign": false
+            }
+        ],
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/ban-types": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/explicit-module-boundary-type": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off"
+    }
+}

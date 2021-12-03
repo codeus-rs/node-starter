@@ -1,11 +1,9 @@
 import * as jwt from 'jsonwebtoken';
-import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
 import { v4 as uuidv4 } from 'uuid';
 import env from '../config/environment';
 
 const { SIGNING_KEY, ENCRYPTION_KEY, STATIC_IV } = env;
-const hashRounds = 12;
 const algorithm = 'aes256';
 
 /**
@@ -33,8 +31,14 @@ export function sign(payload: object, expire: string | number = '999 years'): st
  * Hashing provided data
  * @param text - data to hash
  */
-export function hash(text: string): string {
-    return bcrypt.hashSync(text, hashRounds);
+export async function hash(text: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+        const salt = crypto.randomBytes(16).toString('hex');
+        crypto.scrypt(text, salt, 64, (err, derivedKey) => {
+            if (err) reject(err);
+            resolve(salt + ':' + derivedKey.toString('hex'));
+        });
+    });
 }
 
 /**
@@ -43,8 +47,14 @@ export function hash(text: string): string {
  * @param hashedText - hashed data for comparison
  * @returns boolean response if the two inputs are the same
  */
-export function compare(text: string, hashedText: string): boolean {
-    return bcrypt.compareSync(text, hashedText);
+export async function compare(text: string, hashedText: string): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+        const [salt, key] = hashedText.split(':');
+        crypto.scrypt(text, salt, 64, (err, derivedKey) => {
+            if (err) reject(err);
+            resolve(key == derivedKey.toString('hex'));
+        });
+    });
 }
 
 /**

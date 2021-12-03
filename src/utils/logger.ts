@@ -1,10 +1,13 @@
-import * as pino from 'pino';
+import pino from 'pino';
 
 const log = pino({
-    timestamp: () => `,"time":"${new Date(Date.now()).toUTCString()}"`,
-    prettyPrint: {
-        levelFirst: true,
-        colorize: true,
+    name: 'logger',
+    timestamp: true,
+    transport: {
+        target: 'pino-pretty',
+        options: {
+            colorize: true,
+        },
     },
 });
 

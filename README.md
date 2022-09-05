@@ -5,7 +5,8 @@ Backend boilerplate with sample controller. Currently without test examples.
 ## Pre-start
 
 Before doing anything, make sure to install all necessary dependencies and clone environment example file.
-To do this run in terminal `yarn` followed by `cp example.env .env`. Now you are ready to get started.
+To do this run in terminal `yarn` followed by `cp example.env .env`. After that, use `prepare` script to setup Husky.
+Now you are ready to get started.
 
 ## Available scripts
 

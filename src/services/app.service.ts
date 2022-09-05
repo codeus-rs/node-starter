@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as cors from 'cors';
-import * as helmet from 'helmet';
+import helmet from 'helmet';
 import * as cookieParser from 'cookie-parser';
 import registerRoutes from '../routes';
 import log from '../utils/logger';

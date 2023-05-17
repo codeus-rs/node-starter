@@ -1,7 +1,7 @@
-import * as express from 'express';
-import * as cors from 'cors';
+import express from 'express';
+import cors from 'cors';
 import helmet from 'helmet';
-import * as cookieParser from 'cookie-parser';
+import cookieParser from 'cookie-parser';
 import registerRoutes from '../routes';
 import log from '../utils/logger';
 import { corsConfig, upload, limiter } from '../config/server';

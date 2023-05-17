@@ -1,4 +1,4 @@
-import * as multer from 'multer';
+import multer from 'multer';
 import * as cors from 'cors';
 import rateLimit, { RateLimitRequestHandler } from 'express-rate-limit';
 import env, { fileSize, isDevMode } from './environment';

@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 import sampleController from '../controllers/sample.controller';
 
 const registerRoutes = (app: express.Application): void => {

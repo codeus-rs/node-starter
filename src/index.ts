@@ -1,9 +1,8 @@
 import 'dotenv/config';
 import log from './utils/logger';
 import env from './config/environment';
+import app from './app';
 // Import here before application initialization
-import app from './services/app.service';
-
 let server: any;
 
 const startServer = (port: number) =>

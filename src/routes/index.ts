@@ -1,8 +1,8 @@
 import express from 'express';
-import sampleController from '../controllers/sample.controller';
+import authRoutes from '../modules/auth/auth.routes';
 
 const registerRoutes = (app: express.Application): void => {
-    app.use('/sample', sampleController);
+    app.use('/auth', authRoutes);
 };
 
 export default registerRoutes;

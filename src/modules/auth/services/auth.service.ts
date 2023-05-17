@@ -1,7 +1,6 @@
 import * as jwt from 'jsonwebtoken';
 import * as crypto from 'crypto';
-import { v4 as uuidv4 } from 'uuid';
-import env from '../config/environment';
+import env from '../../../config/environment';
 
 const { SIGNING_KEY, ENCRYPTION_KEY, STATIC_IV } = env;
 const algorithm = 'aes256';
@@ -61,7 +60,6 @@ export async function compare(text: string, hashedText: string): Promise<boolean
  * Encrypting provided data
  * @param text - data to encrypt
  * @param randomIV - determines if IV is going to be random or used from env
- * @param isRegular - if true (default), than standard key is used for encryption, otherwise key for validating Bite secret is generated
  */
 export function encrypt(text: string, randomIV = false): string {
     const iv: string = randomIV ? crypto.randomBytes(16).toString('hex').slice(0, 16) : STATIC_IV;
@@ -73,7 +71,6 @@ export function encrypt(text: string, randomIV = false): string {
 /**
  * Decrypting provided text and returning the usable data
  * @param encryptedText - text to be decrypted
- * @param isRegular - if true (default), than standard key is used for decryption, otherwise key for validating Bite secret is decrypted
  */
 export function decrypt(encryptedText: string): string {
     const params: string[] = encryptedText.split('-');
@@ -85,13 +82,3 @@ export function decrypt(encryptedText: string): string {
     const decipher: crypto.Decipher = crypto.createDecipheriv(algorithm, ENCRYPTION_KEY, iv);
     return decipher.update(value, 'hex', 'utf8') + decipher.final('utf8');
 }
-
-export default {
-    verify,
-    sign,
-    hash,
-    compare,
-    encrypt,
-    decrypt,
-    newUID: uuidv4(),
-};
